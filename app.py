@@ -43,12 +43,15 @@ def doar():
 
     dados = request.get_json()
 
-    print(f" AQUI ESTÃO OS DADOS RETORNADOS DO CLIENTE {dados}")
+    # print(f" AQUI ESTÃO OS DADOS RETORNADOS DO CLIENTE {dados}")
 
     titulo = dados.get("titulo")
     categoria = dados.get("categoria")
     autor = dados.get("autor")
     image_url = dados.get("image_url")
+
+    if not titulo or not categoria or not autor or not image_url:
+        return jsonify({"Erro": "Todos os campos são obrigatórios"}), 400
 
     with sqlite3.connect("database.db") as conn:
         conn.execute(f"""
@@ -60,6 +63,30 @@ def doar():
 
     return jsonify({"mensagem": "Livro Cadastrado com sucesso"}), 201
     # jsonify ele pega a mensagem e retorna em json pro usuário
+
+# agora a parte que o cliente puxa os livros
+
+
+@app.route("/livros", methods=["GET"])
+def listar_livros():
+
+    with sqlite3.connect("database.db") as conn:
+        # SELECT lista os livros, fetchall converte informações do banco d dados de sql pra python
+        livros = conn.execute("SELECT * FROM LIVROS").fetchall()
+
+        livros_formatados = []
+
+        for item in livros:
+            dicionario_livros = {
+                "id": item[0],
+                "titulo": item[1],
+                "categoria": item[2],
+                "autor": item[3],
+                "image_url": item[4]
+            }
+            livros_formatados.append(dicionario_livros)
+
+    return jsonify(livros_formatados), 200
 
 
 if __name__ == "__main__":
