@@ -67,14 +67,12 @@ O endpoint /livros retorna todos os livros cadastrados na API.
 
 **Resposta (200):**
 
-````json
+```json
 {
-    "id":"1",
-    "titulo":"Ainda estou devendo aqui",
-    "categoria":"Finanças",
-    "autor":"Fernando Polia",
-    "image_url":"https://exemplo.com"
-}```
-
----
-````
+  "id": "1",
+  "titulo": "Ainda estou devendo aqui",
+  "categoria": "Finanças",
+  "autor": "Fernando Polia",
+  "image_url": "https://exemplo.com"
+}
+```
