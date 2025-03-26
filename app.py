@@ -1,7 +1,7 @@
 import sqlite3
 
 from flask import Flask, request, jsonify
-import flask_cors import CORS
+from flask_cors import CORS
 
 
 app = Flask(__name__)
@@ -13,7 +13,7 @@ def exiba_mensagem():
     return "<h2>Pagar as pessoas, faz bem as pessoas! </h2>"
 
 
-# se o app.py foro arquivo principal da API:
+# se o app.py for o arquivo principal da API:
 # Execute o app.run com o modo de debug ativado
 
 
