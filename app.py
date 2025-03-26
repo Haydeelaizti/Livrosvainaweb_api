@@ -11,11 +11,6 @@ def exiba_mensagem():
     return "<h2>Pagar as pessoas, faz bem as pessoas! </h2>"
 
 
-# @app.route("/devedora")
-# def mensagem_do_calote():
-#     return "<h3>Pessoas que não pagam, é triste viu...</h3>"
-
-
 # se o app.py foro arquivo principal da API:
 # Execute o app.run com o modo de debug ativado
 
@@ -42,8 +37,6 @@ init_db()
 def doar():
 
     dados = request.get_json()
-
-    # print(f" AQUI ESTÃO OS DADOS RETORNADOS DO CLIENTE {dados}")
 
     titulo = dados.get("titulo")
     categoria = dados.get("categoria")
